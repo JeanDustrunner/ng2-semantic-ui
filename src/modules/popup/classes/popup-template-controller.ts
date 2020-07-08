@@ -43,7 +43,9 @@ export class SuiPopupTemplateController<T> extends SuiPopupController {
     public open():void {
         // If there is a template, inject it into the view.
         if (this.template) {
-            this.popup.templateSibling.clear();
+            if (this.popup.templateSibling) {
+                this.popup.templateSibling.clear();
+            }
 
             this._componentFactory.createView(this.popup.templateSibling, this.template, {
                 $implicit: this.popup,
